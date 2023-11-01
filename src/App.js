@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Media } from "./media";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  return(
+    <div className="container">
+      <h1>Responsive Media Gallery</h1>
+
+      <div className="media-container">
+        {
+          Media.map((file, index) => (
+            <div className="media" key={index}>
+              {
+                file.type === 'image'
+                ? <img src= {file.url} alt=""/>
+                : <video src={file.url} muted/> 
+              }
+            </div>
+          ))
+        }
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
