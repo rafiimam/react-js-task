@@ -70,7 +70,7 @@ const App = () => {
         ))}
       </div>
 
-      <button className="btn" onClick={handleDeleteSelected}>Delete Selected</button>
+      <button className="btn*" onClick={handleDeleteSelected}>Delete Selected</button>
     </div>
   );
 };
