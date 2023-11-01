@@ -63,9 +63,10 @@ code {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  grid-column: span 2; 
-  grid-row: span 3;   
+  grid-column: span 2;
+  grid-row: span 3;
 }
+
 
 .container .media-container .media.first-image img {
   transform: scale(1.5); 
