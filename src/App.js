@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Media } from "./media";
-import "./index.css"; // Make sure to import your CSS file
+import "./index.css"; 
 
+// Image Selection Modal Component
 const ImageSelectionModal = ({ onClose, onAddImage }) => {
   return (
     <div className="image-selection-modal">
@@ -11,6 +12,7 @@ const ImageSelectionModal = ({ onClose, onAddImage }) => {
         </span>
         <h2 className="imageSelection">Select an Image</h2>
         <div className="image-list">
+          {/* Display list of images to select from */}
           {Media.map((image, index) => (
             <div
               key={index}
@@ -30,12 +32,14 @@ const ImageSelectionModal = ({ onClose, onAddImage }) => {
   );
 };
 
+// Main App Component
 const App = () => {
   const [media, setMedia] = useState(Media);
   const [selectedItems, setSelectedItems] = useState([]);
   const [draggedIndex, setDraggedIndex] = useState(null);
   const [showImageSelectionModal, setShowImageSelectionModal] = useState(false);
 
+  // Toggle selection of an image
   const handleToggleSelect = (index) => {
     const updatedSelectedItems = [...selectedItems];
     if (updatedSelectedItems.includes(index)) {
@@ -46,22 +50,26 @@ const App = () => {
     setSelectedItems(updatedSelectedItems);
   };
 
+  // Delete selected images
   const handleDeleteSelected = () => {
     const updatedMedia = media.filter((_, index) => !selectedItems.includes(index));
     setMedia(updatedMedia);
     setSelectedItems([]);
   };
 
+  // Handle drag start
   const handleDragStart = (index) => {
     setDraggedIndex(index);
   };
 
+  // Handle drag over
   const handleDragOver = (index) => (event) => {
     event.preventDefault();
   
     // Check if the drop target is the "Add Images" box
     const isAddImageBox = event.target.classList.contains('add-image-box');
   
+    // Only perform sorting if not over the "Add Images" box
     if (draggedIndex !== null && draggedIndex !== index && !isAddImageBox) {
       const updatedMedia = [...media];
       const [draggedItem] = updatedMedia.splice(draggedIndex, 1);
@@ -70,27 +78,30 @@ const App = () => {
       setDraggedIndex(index);
     }
   };
-   
-  
-  
+
+  // Handle drag end
   const handleDragEnd = () => {
     setDraggedIndex(null);
   };
 
+  // Open the image selection modal
   const handleOpenImageSelectionModal = () => {
     setShowImageSelectionModal(true);
   };
 
+  // Close the image selection modal
   const handleCloseImageSelectionModal = () => {
     setShowImageSelectionModal(false);
   };
 
+  // Add selected image from the modal
   const handleAddImage = (selectedImage) => {
     const updatedMedia = [...media, selectedImage];
     setMedia(updatedMedia);
     handleCloseImageSelectionModal();
   };
 
+  // Get the selected message for the delete button
   const getSelectedMessage = () => {
     const count = selectedItems.length;
     if (count === 1) {
@@ -101,6 +112,7 @@ const App = () => {
     return "";
   };
 
+  // Scroll to the gallery section
   const handleScrollToGallery = () => {
     document.getElementById("gallery").scrollIntoView({
       behavior: "smooth"
@@ -109,13 +121,11 @@ const App = () => {
 
   return (
     <div className="container">
-      <div className="header">
-        <div className="banner"></div>
-      </div>
+      <div className="background"></div>
       <div className="banner-txt">
         <h1> Photo <span className="gal">Gallery</span></h1>
         <p>
-        <p> but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </p>
         
         {/* Button to Scroll to Gallery */}
@@ -123,11 +133,13 @@ const App = () => {
           Scroll to Gallery
         </button>
       </div>
+
       <div>
         <h1 id="caption">Select the images to delete</h1>
       </div>
+
       <div className="media-container" id="gallery">
-        {/* Featured Image */}
+        {/* Display media items */}
         {media.filter(file => file).map((file, index) => (
           <div
             key={index}
@@ -142,11 +154,10 @@ const App = () => {
           >
             {file.type === "image" ? (
               <img src={file.url} alt="" />
-            ) : file.type === "video" ? (
-              <video src={file.url} muted />
             ) : null}
           </div>
-          ))}
+        ))}
+
         {/* Box for Adding Images */}
         <div
           className="media add-image-box"
@@ -157,6 +168,7 @@ const App = () => {
         </div>
       </div>
 
+      {/* Delete button */}
       <button className="btn" onClick={handleDeleteSelected}>
         Delete {getSelectedMessage()}
       </button>

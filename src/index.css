@@ -145,7 +145,7 @@ code {
   text-transform: uppercase;
   margin: 0;
 }
-.header{
+.background{
   background-image: url(/src/1.jpg);
   -webkit-background-size: cover;
   background-size: cover;
