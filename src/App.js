@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Media } from "./media";
 import "./index.css"; // Make sure to import your CSS file
+import "./index.css"; // Make sure to import your CSS file for styling
 
 const ImageSelectionModal = ({ onClose, onAddImage }) => {
   return (
@@ -95,11 +96,32 @@ const App = () => {
     return "";
   };
 
+  const handleScrollToGallery = () => {
+    document.getElementById("gallery").scrollIntoView({
+      behavior: "smooth"
+    });
+  };
+
   return (
     <div className="container">
-      <h1>React Image Gallery</h1>
-
-      <div className="media-container">
+      <div className="header">
+        <div className="banner"></div>
+      </div>
+      <div className="banner-txt">
+        <h1> Photo <span className="gal">Gallery</span></h1>
+        <p>
+        <p> but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </p>
+        
+        {/* Button to Scroll to Gallery */}
+        <button className="scroll-to-gallery-btn" onClick={handleScrollToGallery}>
+          Scroll to Gallery
+        </button>
+      </div>
+        <div>
+          <h1 id="caption">Select the images to delete</h1>
+        </div>
+      <div className="media-container" id="gallery">
         {/* Featured Image */}
         {media.map((file, index) => (
           <div
