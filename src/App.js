@@ -97,7 +97,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>Responsive Media Gallery</h1>
+      <h1>React Image Gallery</h1>
 
       <div className="media-container">
         {/* Featured Image */}
