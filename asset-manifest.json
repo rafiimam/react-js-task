@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-js-task/static/css/main.af3fa9f6.css",
-    "main.js": "/react-js-task/static/js/main.ad5f2ab5.js",
+    "main.js": "/react-js-task/static/js/main.d45365f6.js",
     "static/media/image-10.jpeg": "/react-js-task/static/media/image-10.52d7f0a84ff6eb5a16f9.jpeg",
     "static/media/image-11.jpeg": "/react-js-task/static/media/image-11.0381bcfb9f18643c15df.jpeg",
     "static/media/image-8.webp": "/react-js-task/static/media/image-8.919e2185559767fe9f3a.webp",
@@ -16,10 +16,10 @@
     "static/media/image-6.webp": "/react-js-task/static/media/image-6.3ff89bf379f6fdbd618a.webp",
     "index.html": "/react-js-task/index.html",
     "main.af3fa9f6.css.map": "/react-js-task/static/css/main.af3fa9f6.css.map",
-    "main.ad5f2ab5.js.map": "/react-js-task/static/js/main.ad5f2ab5.js.map"
+    "main.d45365f6.js.map": "/react-js-task/static/js/main.d45365f6.js.map"
   },
   "entrypoints": [
     "static/css/main.af3fa9f6.css",
-    "static/js/main.ad5f2ab5.js"
+    "static/js/main.d45365f6.js"
   ]
 }
