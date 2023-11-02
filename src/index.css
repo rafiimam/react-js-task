@@ -92,6 +92,7 @@ code {
 
 .container .media-container .media.selected {
   border: 5px solid red; 
+  opacity: 0.3;
 }
 
 .btn{
@@ -101,4 +102,31 @@ code {
   font-weight: bold;
   color: white;
   text-align: center;
+}
+/* Add this to your existing CSS file or update as needed */
+
+/* Add this to your existing CSS file or update as needed */
+
+.container .add-image-box {
+  height: 220px; /* Match the height of other image boxes */
+  width: 100%;
+  background-color: grey;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.container .add-image-box:hover {
+  background-color: darkgrey;
+}
+
+.imageSelection{
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 40px;
+  font-weight: bold;
 }
