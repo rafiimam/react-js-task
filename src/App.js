@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Media } from "./media";
 import "./index.css"; // Make sure to import your CSS file
-import "./index.css"; // Make sure to import your CSS file for styling
 
 const ImageSelectionModal = ({ onClose, onAddImage }) => {
   return (
@@ -59,7 +58,11 @@ const App = () => {
 
   const handleDragOver = (index) => (event) => {
     event.preventDefault();
-    if (draggedIndex !== null && draggedIndex !== index) {
+  
+    // Check if the drop target is the "Add Images" box
+    const isAddImageBox = event.target.classList.contains('add-image-box');
+  
+    if (draggedIndex !== null && draggedIndex !== index && !isAddImageBox) {
       const updatedMedia = [...media];
       const [draggedItem] = updatedMedia.splice(draggedIndex, 1);
       updatedMedia.splice(index, 0, draggedItem);
@@ -67,7 +70,9 @@ const App = () => {
       setDraggedIndex(index);
     }
   };
-
+   
+  
+  
   const handleDragEnd = () => {
     setDraggedIndex(null);
   };
@@ -118,12 +123,12 @@ const App = () => {
           Scroll to Gallery
         </button>
       </div>
-        <div>
-          <h1 id="caption">Select the images to delete</h1>
-        </div>
+      <div>
+        <h1 id="caption">Select the images to delete</h1>
+      </div>
       <div className="media-container" id="gallery">
         {/* Featured Image */}
-        {media.map((file, index) => (
+        {media.filter(file => file).map((file, index) => (
           <div
             key={index}
             className={`media ${index === 0 ? "first-image" : ""} ${
@@ -137,12 +142,11 @@ const App = () => {
           >
             {file.type === "image" ? (
               <img src={file.url} alt="" />
-            ) : (
+            ) : file.type === "video" ? (
               <video src={file.url} muted />
-            )}
+            ) : null}
           </div>
-        ))}
-
+          ))}
         {/* Box for Adding Images */}
         <div
           className="media add-image-box"
