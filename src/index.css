@@ -80,7 +80,7 @@ code {
 
 .btn{
   font-size: 20px;
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   border: solid;
   border-color: red;
@@ -88,11 +88,13 @@ code {
   color: red;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 70px;
+  margin-top: 65px;
+  margin-right: 20%;
+  margin-bottom: -40px;
 }
 
 .btn:hover{
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   border: solid;
   border-color: red;
@@ -213,7 +215,16 @@ code {
   font-weight: bold;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 80px;
-  font-size: 40px;
+  margin-top: 60px;
+  margin-left: 20%;
   margin-bottom: -40px;
+  font-size: 40px;
+
+}
+.delete-caption-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  text-align: center;
 }

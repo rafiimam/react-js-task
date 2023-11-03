@@ -177,9 +177,13 @@ const App = () => {
         </button>
       </div>
 
-      <div>
-        <h1 id="caption">Select the images to delete</h1>
+      <div className="delete-caption-container">
+        <h1 id="caption">Click on the images to delete</h1>
+        <button className="btn" onClick={handleDeleteSelected}>
+         Delete {getSelectedMessage()}
+       </button>
       </div>
+
 
       <div className="media-container" id="gallery">
         {/* Display media items */}
@@ -211,10 +215,7 @@ const App = () => {
         </div>
       </div>
 
-      {/* Delete button */}
-      <button className="btn" onClick={handleDeleteSelected}>
-        Delete {getSelectedMessage()}
-      </button>
+      
 
       {/* Image Selection Modal */}
       {showImageSelectionModal && (
