@@ -34,29 +34,48 @@ const ImageSelectionModal = ({ onClose, onAddImage }) => {
 
 // Main App Component
 const App = () => {
+  // State Hook for managing the media files
   const [media, setMedia] = useState(Media);
+
+  // State Hook for keeping track of selected items
   const [selectedItems, setSelectedItems] = useState([]);
+
+  // State Hook for tracking the index of the currently dragged item
   const [draggedIndex, setDraggedIndex] = useState(null);
+
+  // State Hook for managing the visibility of the image selection modal
   const [showImageSelectionModal, setShowImageSelectionModal] = useState(false);
 
   // Toggle selection of an image
   const handleToggleSelect = (index) => {
+    // Create a copy of the selectedItems array to avoid direct mutation
     const updatedSelectedItems = [...selectedItems];
+  
+    // Check if the selectedItems array already includes the current index
     if (updatedSelectedItems.includes(index)) {
+      // If it does, remove the index from the array
       updatedSelectedItems.splice(updatedSelectedItems.indexOf(index), 1);
     } else {
+      // If it doesn't, add the index to the array
       updatedSelectedItems.push(index);
     }
+  
+    // Update the state with the new array of selected items
     setSelectedItems(updatedSelectedItems);
   };
-
+  
   // Delete selected images
   const handleDeleteSelected = () => {
+    // Use the filter method to create a new array of media excluding selected items
     const updatedMedia = media.filter((_, index) => !selectedItems.includes(index));
+  
+    // Update the state with the new array of media
     setMedia(updatedMedia);
+  
+    // Clear the selectedItems array by updating the state
     setSelectedItems([]);
   };
-
+  
   // Handle drag start
   const handleDragStart = (index) => {
     setDraggedIndex(index);
@@ -70,13 +89,26 @@ const App = () => {
     const isAddImageBox = event.target.classList.contains('add-image-box');
   
     // Only perform sorting if not over the "Add Images" box
+    // Check if the draggedIndex is not null (an image is being dragged),
+    // the draggedIndex is not the same as the current index (not dropping
+    // an image on itself), and the drop target is not the "Add Images" box
     if (draggedIndex !== null && draggedIndex !== index && !isAddImageBox) {
+      // Create a copy of the media array to avoid mutating the state directly
       const updatedMedia = [...media];
+      
+      // Remove the draggedItem from its original position using splice
       const [draggedItem] = updatedMedia.splice(draggedIndex, 1);
+
+      // Insert the draggedItem at the new position using splice
       updatedMedia.splice(index, 0, draggedItem);
+
+      // Update the state with the new order of items
       setMedia(updatedMedia);
+
+      // Update the draggedIndex state to the new position
       setDraggedIndex(index);
-    }
+}
+
   };
 
   // Handle drag end
@@ -96,23 +128,34 @@ const App = () => {
 
   // Add selected image from the modal
   const handleAddImage = (selectedImage) => {
+  // Create a shallow copy of the media array and add the selectedImage to the end
     const updatedMedia = [...media, selectedImage];
+
+    // Update the state with the new media array containing the added image
     setMedia(updatedMedia);
+
+    // Close the image selection modal after adding the image
     handleCloseImageSelectionModal();
-  };
+};
 
   // Get the selected message for the delete button
   const getSelectedMessage = () => {
+    // Get the number of selected items
     const count = selectedItems.length;
+
+    // Check the number of selected items and return a corresponding message
     if (count === 1) {
       return "(1 image selected)";
     } else if (count > 1) {
       return `(${count} images selected)`;
     }
-    return "";
-  };
 
-  // Scroll to the gallery section
+  // If no items are selected, return an empty string
+  return "";
+};
+
+
+    // Scroll to the gallery section
   const handleScrollToGallery = () => {
     document.getElementById("gallery").scrollIntoView({
       behavior: "smooth"
@@ -141,22 +184,22 @@ const App = () => {
       <div className="media-container" id="gallery">
         {/* Display media items */}
         {media.filter(file => file).map((file, index) => (
+          // Each media item is represented by a div
           <div
-            key={index}
-            className={`media ${index === 0 ? "first-image" : ""} ${
-              selectedItems.includes(index) ? "selected" : ""
-            } ${index === draggedIndex ? "dragged" : ""}`}
-            draggable
-            onDragStart={() => handleDragStart(index)}
-            onDragOver={handleDragOver(index)}
-            onDragEnd={handleDragEnd}
-            onClick={() => handleToggleSelect(index)}
+            key={index}  // Unique key for React to efficiently update the DOM
+            className={`media ${index === 0 ? "first-image" : ""} ${selectedItems.includes(index) ? "selected" : ""} ${index === draggedIndex ? "dragged" : ""}`}
+            draggable  // Enables the element to be draggable
+            onDragStart={() => handleDragStart(index)}  // Event handler for the start of the drag
+            onDragOver={handleDragOver(index)}  // Event handler for dragging over
+            onDragEnd={handleDragEnd}  // Event handler for the end of the drag
+            onClick={() => handleToggleSelect(index)}  // Event handler for clicking on the item
           >
-            {file.type === "image" ? (
-              <img src={file.url} alt="" />
+            {file.type === "image" ? (  // Conditional rendering based on the type of media
+              <img src={file.url} alt="" />  // Display an image if the type is "image"
             ) : null}
           </div>
         ))}
+
 
         {/* Box for Adding Images */}
         <div
