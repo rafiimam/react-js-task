@@ -33,6 +33,7 @@ code {
   box-shadow: 5px 5px 15px rgb(137, 134, 172);
   overflow: hidden;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .container .media-container .media img {
@@ -102,12 +103,10 @@ code {
   color: white;
   font-weight: bold;
 }
-/* Add this to your existing CSS file or update as needed */
 
-/* Add this to your existing CSS file or update as needed */
 
 .container .add-image-box {
-  height: 220px; /* Match the height of other image boxes */
+  height: 220px; 
   width: 100%;
   background-color: grey;
   color: black;
