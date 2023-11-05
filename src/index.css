@@ -157,7 +157,7 @@ code {
   filter: blur(10px);
 }
 
-.banner-txt{
+#banner-txt{
   position: absolute;
   top: 47%;
   left: 50%;

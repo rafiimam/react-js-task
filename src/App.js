@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Media } from "./media";
 import "./index.css"; 
+import 'animate.css';
 
 // Image Selection Modal Component
 const ImageSelectionModal = ({ onClose, onAddImage }) => {
@@ -165,14 +166,14 @@ const App = () => {
   return (
     <div className="container">
       <div className="background"></div>
-      <div className="banner-txt">
-        <h1> Photo <span className="gal">Gallery</span></h1>
-        <p>
+      <div id="banner-txt">
+        <h1 className="animate__animated animate__rotateInDownLeft"> Photo <span className="gal">Gallery</span></h1>
+        <p className="animate__animated animate__rotateInDownLeft">
         but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </p>
         
         {/* Button to Scroll to Gallery */}
-        <button className="scroll-to-gallery-btn" onClick={handleScrollToGallery}>
+        <button className="scroll-to-gallery-btn animate__animated animate__rotateInDownLeft" onClick={handleScrollToGallery}>
           Scroll to Gallery
         </button>
       </div>
@@ -185,7 +186,7 @@ const App = () => {
       </div>
 
 
-      <div className="media-container" id="gallery">
+      <div className="media-container animate__animated animate__fadeInDown" id="gallery">
         {/* Display media items */}
         {media.filter(file => file).map((file, index) => (
           // Each media item is represented by a div
