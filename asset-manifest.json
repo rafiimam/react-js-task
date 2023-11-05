@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-js-task/static/css/main.d8917eab.css",
-    "main.js": "/react-js-task/static/js/main.afbc5218.js",
+    "main.css": "/react-js-task/static/css/main.a5aa1ebb.css",
+    "main.js": "/react-js-task/static/js/main.718e12c7.js",
     "static/media/image-10.jpeg": "/react-js-task/static/media/image-10.52d7f0a84ff6eb5a16f9.jpeg",
     "static/media/image-11.jpeg": "/react-js-task/static/media/image-11.0381bcfb9f18643c15df.jpeg",
     "static/media/image-8.webp": "/react-js-task/static/media/image-8.919e2185559767fe9f3a.webp",
@@ -15,11 +15,11 @@
     "static/media/1.jpg": "/react-js-task/static/media/1.9f7b64af0e22d8fcf5c2.jpg",
     "static/media/image-6.webp": "/react-js-task/static/media/image-6.3ff89bf379f6fdbd618a.webp",
     "index.html": "/react-js-task/index.html",
-    "main.d8917eab.css.map": "/react-js-task/static/css/main.d8917eab.css.map",
-    "main.afbc5218.js.map": "/react-js-task/static/js/main.afbc5218.js.map"
+    "main.a5aa1ebb.css.map": "/react-js-task/static/css/main.a5aa1ebb.css.map",
+    "main.718e12c7.js.map": "/react-js-task/static/js/main.718e12c7.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8917eab.css",
-    "static/js/main.afbc5218.js"
+    "static/css/main.a5aa1ebb.css",
+    "static/js/main.718e12c7.js"
   ]
 }
